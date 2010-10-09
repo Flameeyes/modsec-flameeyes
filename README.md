@@ -15,14 +15,14 @@ mindful.
 Additionally, it provides antispam measure for active requests (HEAD
 and GET are passive requests, everything else is active as it sends or
 modify content). This antispam is based on what I developed for [my own
-blog][http://blog.flameeyes.eu/] and employs a number of techniques,
+blog](http://blog.flameeyes.eu/) and employs a number of techniques,
 including DNSBL and User-Agent validation.
 
 Prerequisites
 -------------
 
 The ruleset won't work without, obviously,
-[ModSecurity][https://www.modsecurity.org]; it has been tested with
+[ModSecurity](https://www.modsecurity.org); it has been tested with
 ModSecurity 2.5.12, as of October 2010.
 
 Some of the rules make use of the IP collection; do to so you need the
