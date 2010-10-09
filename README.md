@@ -14,8 +14,8 @@ mindful.
 
 Additionally, it provides antispam measure for active requests (HEAD
 and GET are passive requests, everything else is active as it sends or
-modify content). This antispam is based on what I developed for my own
-blog at http://blog.flameeyes.eu/ and employs a number of techniques,
+modify content). This antispam is based on what I developed for [my own
+blog][http://blog.flameeyes.eu/] and employs a number of techniques,
 including DNSBL and User-Agent validation.
 
 Prerequisites
