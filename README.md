@@ -44,6 +44,50 @@ recommended that your server has access to some namecache, either in
 form of caching resolver or a nscd (Name Service Cache Daemon)
 instance, to avoid repeating the same requests for long times.
 
+Asked Questions
+---------------
+
+ * Are you trying to stop all the crawlers? Don't you want to be found
+   on search engines?
+
+   I'm not; this ruleset is designed to stop the “bad” crawlers. There
+   are a number of companies and individuals out there that are using
+   crawlers for shady (or simply useless) business. We range from
+   email address harvester (which will be used by spammers) to
+   companies doing “marketing research” searching for mentions of
+   their clients' products, brands or logos.
+
+ * So are you trying to inconvenience marketeers?
+
+   Again, no. I'm asking them to play by the rules. I have no problem
+   with search companies doing marketing work on the side; or using
+   the indexes of other search engines like Google, Yahoo or
+   Bing. Fetching pages just for the sake of marketing is, though, a
+   waste of our network bandwidth.
+
+ * Some legit crawler is getting a 406 “Not Acceptable” reply; what's that?
+
+   Even if your crawler is totally legit and doing a good job, you
+   should abide to rules; one of these is “request (and accept)
+   compressed responses”. If a crawler is not sending
+   `Accept-Encoding: gzip,deflate`, then it is not requesting
+   compressed responses, which can use even over three times the
+   bandwidth. While a single client requesting non-compressed data is
+   not much of an issue, a crawler requesting multiple pages without
+   it, is wasted effort.
+
+ * Can you add a rule to validate a specific crawler?
+
+   It depends; most search engines use a pre-defined network range to
+   run their crawlers; Google does it, Yahoo does it; Microsoft does
+   it. To verify the veracity of their crawlers, you just have to
+   apply a FcRDNS check, to ensure that the bot is in the correct
+   domain range. Unfortunately, well-intentioned crawlers, especially
+   coming from start-ups, not always have a way to set their reverse
+   DNS, for instance when using Amazon EC2 services. We don't
+   currently have a standardised way to otherwise ensure the
+   provenience of crawlers.
+
 License
 -------
 
