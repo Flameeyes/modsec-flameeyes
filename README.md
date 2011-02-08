@@ -46,6 +46,13 @@ instance, to avoid repeating the same requests for long times.
 
 Asked Questions
 ---------------
+ * My website/browser is not a spammer, where do I complain?
+
+   The ruleset is, for the most part, hand-compiled, so mistakes may
+   happen. Most of the data is gathered through my websites, which
+   receive about 30MB of traffic per day, and which I analyse over
+   time. In case I made a mistake, please let me know by sending an
+   email to flameeyes@gmail.com
 
  * Are you trying to stop all the crawlers? Don't you want to be found
    on search engines?
@@ -87,6 +94,19 @@ Asked Questions
    DNS, for instance when using Amazon EC2 services. We don't
    currently have a standardised way to otherwise ensure the
    provenience of crawlers.
+
+ * I'm anonymising myself by replacing my browser's User-Agent with a
+   funny string, why are you banning me?
+
+   People seem to think they are pretty smart by trying to hide behind
+   User-Agent strings reporting Windows 3.1, DOS, or a Commodore 64 as
+   the system used, but not only these can be easily used by spammers
+   to go around most veracity checks on User-Agent strings, they also
+   they work _against_ anonymity. [EFF's
+   Panopticlick](https://panopticlick.eff.org/) will show how your
+   unique User-Agent is going to make you much more easily trackable,
+   as it provides a very high entropy for browser fingerprinting. So
+   stop trying to be smart, and be smart.
 
 License
 -------
