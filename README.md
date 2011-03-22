@@ -33,12 +33,12 @@ required directives, in case you explicitly don't want to use CRS.
 If you do have CRS installed, there are also a few rules that re-use
 its tests.
 
-*Note:* as of ModSecurity CRS 2.1.1, the IP global collection is
-        hashed on remote address _and_ User-Agent value, to
-        discriminate between different sessions from the same computer
-        or NAT-routed network. This might not be desirable for the
-        antispam measures, and might require creating a different
-        collection for this rule set in the future.
+**Note:** as of ModSecurity CRS 2.1.1, the IP global collection is
+hashed on remote address _and_ User-Agent value, to discriminate
+between different sessions from the same computer or NAT-routed
+network. This might not be desirable for the antispam measures, and
+might require creating a different collection for this rule set in the
+future.
 
 A few rules require you to enable forward-confirmed hostname
 lookups, to do so you need to set `HostnameLookups double` in your
