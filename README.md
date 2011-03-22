@@ -23,17 +23,22 @@ Prerequisites
 
 The ruleset won't work without, obviously,
 [ModSecurity](https://www.modsecurity.org); it has been tested with
-ModSecurity 2.5.12, as of October 2010.
+ModSecurity 2.5.13, as of March 2011.
 
-Some of the rules make use of the IP collection; do to so you need the
-directive
-`SecAction "phase:1,t:none,pass,nolog,initcol:ip=%{remote_addr}"`
-which is already executed if the ModSecurity Core Rule Set is
-instaslled. If you don't wish to use the CRS you have to add the
-directive explicitly.
+Some of the rules make use of global collections and other
+configuration directives that are provided by the ModSecurity Core
+Rule Set. The file `optional/flameeyes_init.conf` contains the
+required directives, in case you explicitly don't want to use CRS.
 
-If you have CRS installed, there are also a few rules that re-use
-their tests.
+If you do have CRS installed, there are also a few rules that re-use
+its tests.
+
+*Note:* as of ModSecurity CRS 2.1.1, the IP global collection is
+        hashed on remote address _and_ User-Agent value, to
+        discriminate between different sessions from the same computer
+        or NAT-routed network. This might not be desirable for the
+        antispam measures, and might require creating a different
+        collection for this rule set in the future.
 
 A few rules require you to enable forward-confirmed hostname
 lookups, to do so you need to set `HostnameLookups double` in your
