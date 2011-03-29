@@ -113,6 +113,32 @@ Asked Questions
    as it provides a very high entropy for browser fingerprinting. So
    stop trying to be smart, and be smart.
 
+Debugging rules
+---------------
+
+While the ruleset strive to avoid false positives whenever possible,
+it can happen that legit requests are denied reply when using these
+rules. It can thus be quite important to debug the encountered issues.
+
+The quickest way is to define a debug entrypoint, which can be
+something like http://yourhost/modsec-debug and then set it up so that
+the requests coming to that address are logged in full into the audit
+log.
+
+Enabling the audit log on all denied requests is definitely a bad
+idea, since it could easily fill up the logs directory; to solve the
+issue, you should add `noauditlog` to the SecDefaultAction list and
+then configure it as follows:
+
+    SecAuditEngine RelevantOnly
+    SecAuditLog /var/log/apache2/modsec_audit.log
+    SecAuditLogType serial
+    SecAuditLogParts ABCFHZ
+
+    <Location /modsec-debug>
+        SecAction "auditlog"
+    </Location>
+
 License
 -------
 
