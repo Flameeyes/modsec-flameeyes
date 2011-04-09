@@ -113,6 +113,19 @@ Asked Questions
    as it provides a very high entropy for browser fingerprinting. So
    stop trying to be smart, and be smart.
 
+ * Why does Munin stop monitoring Apache after setting up the Ruleset?
+
+   Up to March 2011, Munin doesn't present itself with a specific
+   User-Agent string, using instead the default libwww-perl
+   header. This behaviour, though, conforms to that of a number of
+   unknown scanners, and is thus blocked by the ruleset.
+
+   You can work around this limitation by adding a specific rule
+   allowing access from localhost only:
+
+    SecRule REMOTE_ADDR "@eq 127.0.0.1" "ctl:ruleEngine=Off"
+
+
 Debugging rules
 ---------------
 
