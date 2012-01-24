@@ -5,7 +5,10 @@ This is a rule set for ModSecurity developed by Diego Elio Pettenò.
 
 The primary aim of this rule set is to reduce bandwidth waste on hosts
 that might even be static by disallowing certain known marketing,
-broken or abusive bots from hitting the site at all.
+broken or abusive bots from hitting the site at all. This becomes very
+important when the requests are going to generate dynamic content by
+starting up applications such as Rails, which pose a load on the
+webserver, especially if invoked serially.
 
 Even if you do not pay for bandwidth and your website is not going to
 suffer from the requests, keeping spammers and malicious crawlers at
@@ -17,6 +20,10 @@ and GET are passive requests, everything else is active as it sends or
 modify content). This antispam is based on what I developed for [my own
 blog](http://blog.flameeyes.eu/) and employs a number of techniques,
 including DNSBL and User-Agent validation.
+
+ * [Webpage](http://www.flameeyes.eu/projects/modsec)
+ * [GitHub Project](https://github.com/Flameeyes/modsec-flameeyes)
+ * [Flattr](https://flattr.com/thing/128608/Flameeyess-Ruleset-for-ModSecurity)
 
 Prerequisites
 -------------
@@ -57,7 +64,8 @@ Asked Questions
    happen. Most of the data is gathered through my websites, which
    receive about 30MB of traffic per day, and which I analyse over
    time. In case I made a mistake, please let me know by sending an
-   email to flameeyes@gmail.com
+   email to flameeyes@flameeyes.eu — or open an issue on the [GitHub
+   Project](https://github.com/Flameeyes/modsec-flameeyes).
 
  * Are you trying to stop all the crawlers? Don't you want to be found
    on search engines?
@@ -158,4 +166,4 @@ License
 The rules are released under CreativeCommons Attribution-ShareAlike
 license (CC-BY-SA). If you're interested in making use of these rules
 on commercial products where CC-BY-SA is not acceptable, you can
-contact me at flameeyes@gmail.com
+contact me at flameeyes@flameeyes.eu
