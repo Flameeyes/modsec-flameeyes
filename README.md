@@ -1,6 +1,8 @@
 Flameeyes's Ruleset for ModSecurity
 ===================================
 
+[![Flattr this!](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/128608/Flameeyess-Ruleset-for-ModSecurity)
+
 This is a rule set for ModSecurity developed by Diego Elio Pettenò.
 
 The primary aim of this rule set is to reduce bandwidth waste on hosts
