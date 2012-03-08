@@ -1,5 +1,5 @@
-Flameeyes's Ruleset for ModSecurity
-===================================
+[Flameeyes's Ruleset for ModSecurity](http://www.flameeyes.eu/projects/modsec)
+==============================================================================
 
 [![Flattr this!](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/128608/Flameeyess-Ruleset-for-ModSecurity)
 
@@ -23,9 +23,6 @@ modify content). This antispam is based on what I developed for [my own
 blog](http://blog.flameeyes.eu/) and employs a number of techniques,
 including DNSBL and User-Agent validation.
 
- * [Webpage](http://www.flameeyes.eu/projects/modsec)
- * [GitHub Project](https://github.com/Flameeyes/modsec-flameeyes)
- * [Flattr](https://flattr.com/thing/128608/Flameeyess-Ruleset-for-ModSecurity)
 
 Prerequisites
 -------------
@@ -58,8 +55,22 @@ recommended that your server has access to some namecache, either in
 form of caching resolver or a nscd (Name Service Cache Daemon)
 instance, to avoid repeating the same requests for long times.
 
+Development and contribution
+----------------------------
+
+The rules are developed via a [GitHub
+repository](https://github.com/Flameeyes/modsec-flameeyes) which also
+hosts the issue tracker. If you want to make fixes or improvements to
+the rules, you're invited to fork the project and send a pull request
+there.
+
+Starting from ModSecurity 2.7 rule IDs are mandatory. To avoid
+colliding with other rulesets, this ruleset is assigned, as of
+2012-03-07, the range 430,000-439,999.
+
 Asked Questions
 ---------------
+
  * My website/browser is not a spammer, where do I complain?
 
    The ruleset is, for the most part, hand-compiled, so mistakes may
