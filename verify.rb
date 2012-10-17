@@ -88,7 +88,7 @@ Dir["**/*.conf"].each do |rulefile|
     elsif ids.size == 0
       id = nil
     else
-      id = ids[0].sub(/^id:/, '').to_i
+      id = ids[0].sub(/^id:/, '').gsub(/(?:^'|'$)/, '').to_i
     end
 
     if this_chained
