@@ -75,7 +75,7 @@ Dir["**/*.conf"].each do |rulefile|
     end
 
     # get the rule and split in its components
-    rule = (rawrule.gsub(/(?:^"|"$)/, '') || "").split(',')
+    rule = (rawrule || "").gsub(/(?:^"|"$)/, '').split(',')
 
     if rule.include?("chain")
       next_chained = true
