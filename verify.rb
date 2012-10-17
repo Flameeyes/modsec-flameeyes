@@ -26,7 +26,7 @@ res = 0
 range = Range.new(*File.read('id-range').rstrip.split('-').map(&:to_i))
 
 # open all the rule files
-Dir["*/*.conf"].each do |rulefile|
+Dir["**/*.conf"].each do |rulefile|
   # read the content
   content = File.read(rulefile)
 
@@ -75,7 +75,7 @@ Dir["*/*.conf"].each do |rulefile|
     end
 
     # get the rule and split in its components
-    rule = (rawrule || "").split(',')
+    rule = (rawrule.gsub(/(?:^"|"$)/, '') || "").split(',')
 
     if rule.include?("chain")
       next_chained = true
