@@ -42,7 +42,7 @@ Dir["**/*.conf"].each do |rulefile|
     line = (prevline + line) unless prevline.nil?
 
     # remove comments
-    line.gsub!(/(^|[^'"]|'[^']*'|"[^"]*")#.*/) { $1 }
+    line.gsub!(/^([^'"]|'[^']+'|"[^"]+")#.*/) { $1 }
 
     if line =~ /\\\n$/
       prevline = line.gsub(/\\\n/, '')
@@ -52,13 +52,13 @@ Dir["**/*.conf"].each do |rulefile|
     end
 
     # skip if it's an empty line (this also skip comment-only lines)
-    next if line =~ /^\s+$/
+    next if line =~ /(?:^\s+$|^#)/
 
     this_chained = next_chained
     next_chained = false
 
     # split the directive in its components, considering quoted strings
-    directive = line.scan(/([^'"\s]+|'[^']*'|"[^"]*")(?:\s+|$)/).flatten
+    directive = line.scan(/([^'"\s][^\s]*[^'"\s]|'(?:[^']|\\')*[^\\]'|"(?:[^"]|\\")*[^\\]")(?:\s+|$)/).flatten
     directive.map! do |piece|
       # then make sure to split the quoting out of the quoted strings
       (piece[0] == '"' || piece[0] == "'") ? piece[1..-2] : piece
@@ -75,7 +75,7 @@ Dir["**/*.conf"].each do |rulefile|
     end
 
     # get the rule and split in its components
-    rule = (rawrule || "").gsub(/(?:^"|"$)/, '').split(',')
+    rule = (rawrule || "").gsub(/(?:^"|"$)/, '').split(/\s*,\s*/)
 
     if rule.include?("chain")
       next_chained = true
