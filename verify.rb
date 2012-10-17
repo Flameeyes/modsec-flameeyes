@@ -19,6 +19,7 @@
 require 'set'
 
 seen_ids = Set.new
+res = 0
 
 # open all the rule files
 Dir["*/*.conf"].each do |rulefile|
@@ -49,11 +50,18 @@ Dir["*/*.conf"].each do |rulefile|
       (piece[0] == '"' || piece[0] == "'") ? piece[1..-2] : piece
     end
 
-    # skip if it's not a SecRule
-    next if directive[0] != "SecRule"
+    # skip if it's not a SecRule or SecAction
+    case directive[0]
+    when "SecRule"
+      rawrule = directive[3]
+    when "SecAction"
+      rawrule = directive[1]
+    else
+      next
+    end
 
     # get the rule and split in its components
-    rule = (directive[3] || "").split(',')
+    rule = (rawrule || "").split(',')
 
     if rule.include?("chain")
       next_chained = true
@@ -70,17 +78,25 @@ Dir["*/*.conf"].each do |rulefile|
     end
 
     if this_chained
-      $stderr.puts "#{rulefile}:#{lineno} chained rule with id" unless id.nil?
+      unless id.nil?
+        $stderr.puts "#{rulefile}:#{lineno} chained rule with id"
+        res = 1
+      end
       next
     elsif id.nil?
       $stderr.puts "#{rulefile}:#{lineno} rule missing id (#{rule.join(',')})"
+      res = 1
       next
     elsif id < 430000 || id > 439999
       $stderr.puts "#{rulefile}:#{lineno} rule with id outside of reserved range"
+      res = 1
     elsif seen_ids.include?(id)
-      $stderr.puts "#{rulefile}:#{lineno} rule with duplicated id"
+      $stderr.puts "#{rulefile}:#{lineno} rule with duplicated id #{id}"
+      res = 1
     end
 
     seen_ids << id
   end
 end
+
+exit res
