@@ -25,19 +25,29 @@ res = 0
 Dir["*/*.conf"].each do |rulefile|
   # read the content
   content = File.read(rulefile)
-  # join the lines where continuation is used
-  content.gsub!(/\\\n/, '')
 
   lineno = 0
   this_chained = next_chained = false
+  prevline = nil
 
   # for each line in the rule file
   content.each_line do |line|
     lineno += 1
 
+    # handle continuation lines
+    line = (prevline + line) unless prevline.nil?
+
     # remove comments
     line.gsub!(/(^|[^'"]|'[^']*'|"[^"]*")#.*/) { $1 }
-    # and skip if it's an empty line (this also skip comment-only lines)
+
+    if line =~ /\\\n$/
+      prevline = line.gsub(/\\\n/, '')
+      next
+    else
+      prevline = nil
+    end
+
+    # skip if it's an empty line (this also skip comment-only lines)
     next if line =~ /^\s+$/
 
     this_chained = next_chained
