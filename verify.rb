@@ -21,6 +21,10 @@ require 'set'
 seen_ids = Set.new
 res = 0
 
+# read reserved id range from the id-range file so that it can be
+# configured on a per-repository basis.
+range = Range.new(*File.read('id-range').rstrip.split('-').map(&:to_i))
+
 # open all the rule files
 Dir["*/*.conf"].each do |rulefile|
   # read the content
@@ -97,8 +101,8 @@ Dir["*/*.conf"].each do |rulefile|
       $stderr.puts "#{rulefile}:#{lineno} rule missing id (#{rule.join(',')})"
       res = 1
       next
-    elsif id < 430000 || id > 439999
-      $stderr.puts "#{rulefile}:#{lineno} rule with id outside of reserved range"
+    elsif ! range.include?(id)
+      $stderr.puts "#{rulefile}:#{lineno} rule with id #{id} outside of reserved range #{range}"
       res = 1
     elsif seen_ids.include?(id)
       $stderr.puts "#{rulefile}:#{lineno} rule with duplicated id #{id}"
