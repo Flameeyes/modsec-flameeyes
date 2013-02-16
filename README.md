@@ -144,7 +144,7 @@ Asked Questions
    You can work around this limitation by adding a specific rule
    allowing access from localhost only:
 
-    SecRule REMOTE_ADDR "@eq 127.0.0.1" "ctl:ruleEngine=Off"
+    SecRule REMOTE_ADDR "@ipMatch 127.0.0.1" "ctl:ruleEngine=Off"
 
 
 Debugging rules
