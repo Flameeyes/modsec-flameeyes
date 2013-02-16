@@ -29,7 +29,7 @@ Prerequisites
 
 The ruleset won't work without, obviously,
 [ModSecurity](https://www.modsecurity.org); it has been tested with
-ModSecurity 2.5.13, as of March 2011.
+ModSecurity 2.7.1 as of February 2013.
 
 Some of the rules make use of global collections and other
 configuration directives that are provided by the ModSecurity Core
