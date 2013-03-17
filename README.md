@@ -103,11 +103,25 @@ Asked Questions
    Even if your crawler is totally legit and doing a good job, you
    should abide to rules; one of these is “request (and accept)
    compressed responses”. If a crawler is not sending
-   `Accept-Encoding: gzip,deflate`, then it is not requesting
-   compressed responses, which can use even over three times the
-   bandwidth. While a single client requesting non-compressed data is
-   not much of an issue, a crawler requesting multiple pages without
-   it, is wasted effort.
+   `Accept-Encoding: gzip,deflate` (or something along those lines),
+   then it is not requesting compressed responses, which can use even
+   over three times the bandwidth. While a single client requesting
+   non-compressed data is not much of an issue, a crawler requesting
+   multiple pages without it, is wasted effort.
+
+ * Why do you try to validate my bot as if it was a browser?
+
+   Some crawlers seem to like declaring themselves as browsers, for
+   the most part faking a Safari or (more rarely) Chrome User-Agent
+   string. More often than not, in these cases, the crawlers then get
+   an access denied error.
+
+   If you're writing a crawler, make sure that its User-Agent is
+   proper, stating where it's coming from, and stop trying to pass for
+   a browser, if you're not. With the advent of "optimizing" proxies
+   and tricks like
+   [PageSpeed](http://code.google.com/speed/page-speed/), lying on
+   your User-Agent can easily give you wrong data to begin with.
 
  * Can you add a rule to validate a specific crawler?
 
@@ -136,7 +150,7 @@ Asked Questions
 
  * Why does Munin stop monitoring Apache after setting up the Ruleset?
 
-   Up to March 2011, Munin doesn't present itself with a specific
+   Up to March 2011, Munin didn't present itself with a specific
    User-Agent string, using instead the default libwww-perl
    header. This behaviour, though, conforms to that of a number of
    unknown scanners, and is thus blocked by the ruleset.
