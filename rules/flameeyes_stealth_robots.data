@@ -3,6 +3,7 @@ blogscope
 ecairn-grabber
 embedly
 fever/
+flipboardproxy
 getpagetitle
 gist server
 gwene/
@@ -12,6 +13,7 @@ metauri
 newsblur content fetcher
 newsblur favicon fetcher
 newsblur feed fetcher
+newsblur feed finder
 newsblur page fetcher
 paperlibot
 postrank
