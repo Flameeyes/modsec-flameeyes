@@ -2,6 +2,7 @@ bitlybot
 blogscope
 ecairn-grabber
 embedly
+feed wrangler
 fever/
 flipboardproxy
 getpagetitle
@@ -9,6 +10,7 @@ gist server
 gwene/
 inagist
 linkedinbot
+livedoor feedfetcher
 metauri
 newsblur content fetcher
 newsblur favicon fetcher
