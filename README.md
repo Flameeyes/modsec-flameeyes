@@ -1,4 +1,4 @@
-[Flameeyes's Ruleset for ModSecurity](http://www.flameeyes.eu/projects/modsec)
+[Flameeyes's Ruleset for ModSecurity](https://www.flameeyes.eu/p/modsec-flameeyes)
 ==============================================================================
 
 This is a rule set for ModSecurity developed by Diego Elio Pettenò.
@@ -18,7 +18,7 @@ mindful.
 Additionally, it provides antispam measure for active requests (HEAD
 and GET are passive requests, everything else is active as it sends or
 modify content). This antispam is based on what I developed for [my own
-blog](http://blog.flameeyes.eu/) and employs a number of techniques,
+blog](https://blog.flameeyes.eu/) and employs a number of techniques,
 including DNSBL and User-Agent validation.
 
 
@@ -167,7 +167,7 @@ it can happen that legit requests are denied reply when using these
 rules. It can thus be quite important to debug the encountered issues.
 
 The quickest way is to define a debug entrypoint, which can be
-something like http://yourhost/modsec-debug and then set it up so that
+something like `http://yourhost/modsec-debug` and then set it up so that
 the requests coming to that address are logged in full into the audit
 log.
 
