@@ -1,4 +1,4 @@
-[Flameeyes's Ruleset for ModSecurity](https://www.flameeyes.eu/p/modsec-flameeyes)
+[Flameeyes's Ruleset for ModSecurity](https://www.flameeyes.com/p/modsec-flameeyes)
 ==============================================================================
 
 This is a rule set for ModSecurity developed by Diego Elio Pettenò.
@@ -18,8 +18,8 @@ mindful.
 Additionally, it provides antispam measure for active requests (HEAD
 and GET are passive requests, everything else is active as it sends or
 modify content). This antispam is based on what I developed for [my own
-blog](https://blog.flameeyes.eu/) and employs a number of techniques,
-including DNSBL and User-Agent validation.
+blog](https://flameeyes.blog/) (though I'm no longer using) and employs
+a number of techniques, including DNSBL and User-Agent validation.
 
 
 Prerequisites
@@ -75,7 +75,7 @@ Asked Questions
    happen. Most of the data is gathered through my websites, which
    receive about 30MB of traffic per day, and which I analyse over
    time. In case I made a mistake, please let me know by sending an
-   email to flameeyes@flameeyes.eu — or open an issue on the [GitHub
+   email to flameeyes@flameeyes.com — or open an issue on the [GitHub
    Project](https://github.com/Flameeyes/modsec-flameeyes).
 
  * Are you trying to stop all the crawlers? Don't you want to be found
